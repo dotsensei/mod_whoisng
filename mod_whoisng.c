@@ -27,7 +27,7 @@ module AP_MODULE_DECLARE_DATA whoisng_module;
 
 typedef struct whois_conn_rec {
         int whois_on;
-        char *whois_prefix;
+        const char *whois_prefix;
 } whois_conn_rec;
 
 
@@ -65,7 +65,7 @@ apr_status_t whois_input_filter(ap_filter_t *f, apr_bucket_brigade *b,
 	const char *original=NULL;
 	char *quoted=NULL;
 	char *crlfpos=NULL;
-	int len=1;
+	unsigned long int len=1;
 
 	int alt=0;
 	char clean_original[500]="a";
